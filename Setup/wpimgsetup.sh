@@ -1,3 +1,23 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@webhostsg 
+Learn Git and GitHub without any code!
+Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+
+
+552litespeedtech/ls-cloud-image
+ Code Issues 1 Pull requests 1 Actions Projects 0 Wiki Security Insights
+ls-cloud-image/Setup/wpimgsetup.sh
+@Code-Egg Code-Egg new comg for db 10.4, use systemctl for lsws restart
+a090eb8 15 days ago
+809 lines (727 sloc)  21.5 KB
+  
 #!/usr/bin/env bash
 # /********************************************************************
 # LiteSpeed WordPress setup Script
@@ -19,11 +39,11 @@ REDISCONF='/etc/redis/redis.conf'
 WPCONSTCONF="${DOCHM}/wp-content/plugins/litespeed-cache/data/const.default.ini"
 MARIADBCNF='/etc/mysql/mariadb.conf.d/60-server.cnf'
 PHPVER=73
-FIREWALLLIST="22 80 443"
+FIREWALLLIST="80 443 1980"
 USER='www-data'
 GROUP='www-data'
 THEME='twentytwenty'
-PLUGINLIST="litespeed-cache.zip all-in-one-seo-pack.zip all-in-one-wp-migration.zip google-analytics-for-wordpress.zip jetpack.zip wp-mail-smtp.zip"
+PLUGINLIST="litespeed-cache.zip all-in-one-seo-pack.zip all-in-one-wp-migration.zip google-analytics-for-wordpress.zip jetpack.zip wp-mail-smtp.zip post-and-page-builder.zip"
 root_mysql_pass=$(openssl rand -hex 24)
 ALLERRORS=0
 EXISTSQLPASS=''
@@ -316,33 +336,25 @@ centos_config_ols(){
     linechange 'www/html' ${LSWSCONF} "${NEWKEY}"
     cat > ${WPVHCONF} <<END 
 docRoot                   ${DOCLAND}/
-
 index  {
   useServer               0
   indexFiles              index.php index.html
 }
-
 context /phpmyadmin/ {
   location                ${PHPCONF}
   allowBrowse             1
   indexFiles              index.php
-
   accessControl  {
     allow                 *
   }
-
   rewrite  {
     enable                0
     inherit               0
-
   }
   addDefaultCharset       off
-
   phpIniOverride  {
-
   }
 }
-
 rewrite  {
   enable                1
   autoLoadHtaccess        1
@@ -361,33 +373,25 @@ ubuntu_config_ols(){
     linechange 'www/html' ${LSWSCONF} "${NEWKEY}"
     cat > ${WPVHCONF} <<END 
 docRoot                   ${DOCLAND}/
-
 index  {
   useServer               0
   indexFiles              index.php index.html
 }
-
 context /phpmyadmin/ {
   location                ${PHPCONF}
   allowBrowse             1
   indexFiles              index.php
-
   accessControl  {
     allow                 *
   }
-
   rewrite  {
     enable                0
     inherit               0
-
   }
   addDefaultCharset       off
-
   phpIniOverride  {
-
   }
 }
-
 rewrite  {
   enable                1
   autoLoadHtaccess        1
@@ -461,14 +465,12 @@ centos_config_memcached(){
 Description=Memcached
 Before=httpd.service
 After=network.target
-
 [Service]
 User=${USER}
 Group=${GROUP}
 Type=simple
 EnvironmentFile=-/etc/sysconfig/memcached
 ExecStart=/usr/bin/memcached -u \$USER -p \$PORT -m \$CACHESIZE -c \$MAXCONN \$OPTIONS
-
 [Install]
 WantedBy=multi-user.target
 END
@@ -563,7 +565,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 </IfModule>
-
 # END WordPress
 EOM
 }
@@ -589,8 +590,6 @@ cache_object_host = '/var/www/memcached.sock'
 ;cache_object_port = '11211'
 cache_object_port = ''
 auto_upgrade = true
-
-
 ; OPID_CACHE_BROWSER_TTL
 cache_browser_ttl = 2592000
 ; OPID_PUBLIC_TTL
@@ -638,6 +637,11 @@ require_once( WP_CONTENT_DIR.'/../wp-admin/includes/plugin.php' );
 \$path = 'litespeed-cache/litespeed-cache.php' ;
 if (!is_plugin_active( \$path )) {
     activate_plugin( \$path ) ;
+    rename( __FILE__ . '.bk', __FILE__ );
+}
+\$path2 = 'post-and-page-builder/post-and-page-builder.php' ;
+if (!is_plugin_active( \$path2 )) {
+    activate_plugin( \$path2 ) ;
     rename( __FILE__ . '.bk', __FILE__ );
 }
 .
@@ -807,3 +811,15 @@ main(){
 }
 main
 exit 0
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
