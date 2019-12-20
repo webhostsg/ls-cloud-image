@@ -619,11 +619,6 @@ if (!is_plugin_active( \$path )) {
     activate_plugin( \$path ) ;
     rename( __FILE__ . '.bk', __FILE__ );
 }
-\$path2 = 'post-and-page-builder/post-and-page-builder.php' ;
-if (!is_plugin_active( \$path2 )) {
-    activate_plugin( \$path2 ) ;
-    rename( __FILE__ . '.bk', __FILE__ );
-}
 .
 w
 q
