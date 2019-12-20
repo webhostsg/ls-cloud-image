@@ -531,6 +531,19 @@ install_wp_plugin(){
     rm -f ${DOCHM}/wp-content/plugins/*.zip
 }
 
+install_inspirations_plugin(){
+    echoG 'Setting WordPress'
+        echoG "Install Inspirations Plugin"
+        wget -q -P ${DOCHM}/wp-content/plugins/ https://repo.boldgrid.com/boldgrid-inspirations.zip
+        if [ $? = 0 ]; then
+            unzip -qq -o ${DOCHM}/wp-content/plugins/boldgrid-inspirations -d ${DOCHM}/wp-content/plugins/
+        else
+            echoR "Inspirations Plugin FAILED to download"
+        fi
+    done
+    rm -f ${DOCHM}/wp-content/plugins/*.zip
+}
+
 set_htaccess(){
     if [ ! -f ${DOCHM}/.htaccess ]; then 
         touch ${DOCHM}/.htaccess
@@ -616,9 +629,10 @@ EOM
 require_once( WP_CONTENT_DIR.'/../wp-admin/includes/plugin.php' );
 \$path = 'litespeed-cache/litespeed-cache.php' ;
 \$pathNew = 'post-and-page-builder/post-and-page-builder.php' ;
+\$pathInsp = 'boldgrid-inspirations/boldgrid-inspirations.php' ;
 if (!is_plugin_active( \$path )) {
     activate_plugin( \$path ) ;
-    activate_plugin( \$pathNew ) ;
+    activate_plugin( \$pathInsp ) ;
     rename( __FILE__ . '.bk', __FILE__ );
 }
 .
