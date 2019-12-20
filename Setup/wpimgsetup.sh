@@ -1,23 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@webhostsg 
-Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-
-
-552litespeedtech/ls-cloud-image
- Code Issues 1 Pull requests 1 Actions Projects 0 Wiki Security Insights
-ls-cloud-image/Setup/wpimgsetup.sh
-@Code-Egg Code-Egg new comg for db 10.4, use systemctl for lsws restart
-a090eb8 15 days ago
-809 lines (727 sloc)  21.5 KB
-  
 #!/usr/bin/env bash
 # /********************************************************************
 # LiteSpeed WordPress setup Script
