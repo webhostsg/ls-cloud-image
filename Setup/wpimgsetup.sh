@@ -533,6 +533,7 @@ install_wp_plugin(){
 
 install_inspirations_plugin(){
     echoG 'Setting WordPress'
+    do
         echoG "Install Inspirations Plugin"
         wget -q -P ${DOCHM}/wp-content/plugins/ https://repo.boldgrid.com/boldgrid-inspirations.zip
         if [ $? = 0 ]; then
