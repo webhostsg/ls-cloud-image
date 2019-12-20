@@ -615,8 +615,10 @@ EOM
 2i
 require_once( WP_CONTENT_DIR.'/../wp-admin/includes/plugin.php' );
 \$path = 'litespeed-cache/litespeed-cache.php' ;
+\$pathNew = 'post-and-page-builder/post-and-page-builder.php' ;
 if (!is_plugin_active( \$path )) {
     activate_plugin( \$path ) ;
+    activate_plugin( \$pathNew ) ;
     rename( __FILE__ . '.bk', __FILE__ );
 }
 .
