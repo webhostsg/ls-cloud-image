@@ -768,6 +768,7 @@ ubuntu_main_config(){
 
 wp_config(){
     install_wp_plugin
+    install_inspirations_plugin
     set_htaccess
     set_lscache
 }
