@@ -23,7 +23,7 @@ FIREWALLLIST="80 443 1980"
 USER='www-data'
 GROUP='www-data'
 THEME='twentytwenty'
-PLUGINLIST="litespeed-cache.zip all-in-one-seo-pack.zip all-in-one-wp-migration.zip google-analytics-for-wordpress.zip jetpack.zip wp-mail-smtp.zip post-and-page-builder.zip"
+PLUGINLIST="litespeed-cache.zip all-in-one-seo-pack.zip all-in-one-wp-migration.zip google-analytics-for-wordpress.zip jetpack.zip wp-mail-smtp.zip post-and-page-builder.zip boldgrid-backup.zip boldgrid-easy-seo.zip"
 root_mysql_pass=$(openssl rand -hex 24)
 ALLERRORS=0
 EXISTSQLPASS=''
@@ -532,9 +532,9 @@ install_wp_plugin(){
 }
 
 install_inspirations_plugin(){
-    echoG 'Setting WordPress'
+    echoG 'Setting BoldGrid'
     
-        echoG "Install Inspirations Plugin"
+        echoG "Install boldgrid-inspirations.zip"
         wget -q -P ${DOCHM}/wp-content/plugins/ https://repo.boldgrid.com/boldgrid-inspirations.zip
         if [ $? = 0 ]; then
             unzip -qq -o ${DOCHM}/wp-content/plugins/boldgrid-inspirations -d ${DOCHM}/wp-content/plugins/
@@ -631,9 +631,12 @@ require_once( WP_CONTENT_DIR.'/../wp-admin/includes/plugin.php' );
 \$path = 'litespeed-cache/litespeed-cache.php' ;
 \$pathNew = 'post-and-page-builder/post-and-page-builder.php' ;
 \$pathInsp = 'boldgrid-inspirations/boldgrid-inspirations.php' ;
+\$pathUpkeep = 'boldgrid-backup/boldgrid-backup.php' ;
+\$pathSeo = 'boldgrid-easy-seo/boldgrid-easy-seo.php' ;
 if (!is_plugin_active( \$path )) {
     activate_plugin( \$path ) ;
     activate_plugin( \$pathInsp ) ;
+    activate_plugin( \$pathUpkeep ) ;
     rename( __FILE__ . '.bk', __FILE__ );
 }
 .
