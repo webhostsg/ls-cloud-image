@@ -265,7 +265,7 @@ yumupgrade(){
     echo -ne '#######################   (100%)\r'
 }
 main_cert_setup(){
-    printf "%s"   "Installing Let's Encrypt SSL for your domain..."
+    printf "%s"   "Installing Let's Encrypt SSL for your domain...\n"
     
     #in case www domain , check both root domain and www domain accessibility.
         domainverify
@@ -303,9 +303,11 @@ main_upgrade(){
             #ELAPSED="$((${END_TIME}-${START_TIME}))"
             #echoY "***Total of ${ELAPSED} seconds to finish process***"
             echoG 'Your system is up to date'
+            echoG '\nPlease visit https://${MY_DOMAIN} to complete the WordPress setup '
            
     else
         echoG 'Your system is up to date'
+        echoG '\nPlease visit https://${MY_DOMAIN} to complete the WordPress setup '
     fi        
 }
 
