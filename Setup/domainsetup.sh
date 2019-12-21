@@ -135,16 +135,16 @@ domainadd(){
 domainverify(){
     curl -Is http://${MY_DOMAIN}/ | grep -i LiteSpeed > /dev/null 2>&1
     if [ $? = 0 ]; then
-        echoG "${MY_DOMAIN} check PASS"
+        echoG "\n${MY_DOMAIN} check PASS"
     else
-        echo "${MY_DOMAIN} inaccessible, please verify."; exit 1    
+        echo "\n${MY_DOMAIN} inaccessible, please verify."; exit 1    
     fi
     if [ ${WWW} = 'TRUE' ]; then
         curl -Is http://${MY_DOMAIN2}/ | grep -i LiteSpeed > /dev/null 2>&1
         if [ $? = 0 ]; then 
-            echoG "${MY_DOMAIN2} check PASS"   
+            echoG "\n${MY_DOMAIN2} check PASS"   
         else
-            echo "${MY_DOMAIN2} inaccessible, please verify."; exit 1    
+            echo "\n${MY_DOMAIN2} inaccessible, please verify."; exit 1    
         fi    
     fi
 }
@@ -265,7 +265,7 @@ yumupgrade(){
     echo -ne '#######################   (100%)\r'
 }
 main_cert_setup(){
-    printf "%s"   "Installing Let's Encrypt SSL for your domain...\n"
+    printf "%s"   "Installing Let's Encrypt SSL for your domain..."
     
     #in case www domain , check both root domain and www domain accessibility.
         domainverify
