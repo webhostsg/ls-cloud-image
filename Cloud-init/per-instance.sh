@@ -168,7 +168,7 @@ ct_version()
 setup_domain(){
     ### domainsetup.sh
     if [ ! -e /opt/domainsetup.sh ]; then  
-        curl -s https://raw.githubusercontent.com/litespeedtech/ls-cloud-image/master/Setup/domainsetup.sh \
+        curl -s https://raw.githubusercontent.com/webhostsg/ls-cloud-image/master/Setup/domainsetup.sh \
         -o /opt/domainsetup.sh
         if [ $? != 0 ];  then 
             ### Use LiteSpeed backup repo
@@ -180,7 +180,7 @@ setup_domain(){
 setup_banner(){
     ### Setup banner automatically
     if [ ! -e ${BANNERDST} ]; then  
-        curl -s https://raw.githubusercontent.com/litespeedtech/ls-cloud-image/master/Banner/${BANNERNAME} \
+        curl -s https://raw.githubusercontent.com/webhostsg/ls-cloud-image/master/Banner/${BANNERNAME} \
         -o ${BANNERDST}  
 
         if [ $? != 0 ];  then 
