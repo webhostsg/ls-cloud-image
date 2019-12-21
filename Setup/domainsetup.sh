@@ -265,9 +265,8 @@ yumupgrade(){
     echo -ne '#######################   (100%)\r'
 }
 main_cert_setup(){
-    printf "%s"   "Do you wish to issue a Let's encrypt certificate for this domain? [y/N]"
-    read TMP_YN
-    if [[ "${TMP_YN}" =~ ^(y|Y) ]]; then
+    printf "%s"   "Installing Let's Encrypt SSL for your domain..."
+    
     #in case www domain , check both root domain and www domain accessibility.
         domainverify
         while true; do 
@@ -282,7 +281,7 @@ main_cert_setup(){
         certbothook 
         force_https
         restart_lsws
-    fi        
+            
 }
 
 main_upgrade(){
