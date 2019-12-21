@@ -297,7 +297,7 @@ main_upgrade(){
             else
                 yumupgrade
             fi    
-            echoG -e "\nUpdate complete" 
+            echoG "\nUpdate complete" 
             #END_TIME="$(date -u +%s)"
             #ELAPSED="$((${END_TIME}-${START_TIME}))"
             #echoY "***Total of ${ELAPSED} seconds to finish process***"
@@ -306,7 +306,7 @@ main_upgrade(){
            
     else
         echoG 'Your system is up to date'
-        echoG -e "\nPlease visit https://${MY_DOMAIN} to complete the WordPress setup "
+        echoG "\nPlease visit https://${MY_DOMAIN} to complete the WordPress setup."
     fi        
 }
 
