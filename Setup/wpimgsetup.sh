@@ -635,8 +635,10 @@ require_once( WP_CONTENT_DIR.'/../wp-admin/includes/plugin.php' );
 \$pathSeo = 'boldgrid-easy-seo/boldgrid-easy-seo.php' ;
 if (!is_plugin_active( \$path )) {
     activate_plugin( \$path ) ;
+    activate_plugin( \$pathNew ) ;
     activate_plugin( \$pathInsp ) ;
     activate_plugin( \$pathUpkeep ) ;
+    activate_plugin( \$pathSeo ) ;
     rename( __FILE__ . '.bk', __FILE__ );
 }
 .
