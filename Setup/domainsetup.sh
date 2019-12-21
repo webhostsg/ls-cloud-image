@@ -291,7 +291,7 @@ main_upgrade(){
     fi    
     if [ "${UPDATE}" = 'TRUE' ]; then
         #START_TIME="$(date -u +%s)"
-            echoG "Update Starting..." 
+            echoG "Update Starting... Please wait." 
             if [ "${OSNAME}" = 'ubuntu' ]; then 
                 aptgetupgrade
             else
@@ -302,11 +302,11 @@ main_upgrade(){
             #ELAPSED="$((${END_TIME}-${START_TIME}))"
             #echoY "***Total of ${ELAPSED} seconds to finish process***"
             echoG 'Your system is up to date'
-            echoG '\nPlease visit https://${MY_DOMAIN} to complete the WordPress setup '
+            echoG "\nPlease visit https://${MY_DOMAIN} to complete the WordPress setup "
            
     else
         echoG 'Your system is up to date'
-        echoG -e '\nPlease visit https://${MY_DOMAIN} to complete the WordPress setup '
+        echoG -e "\nPlease visit https://${MY_DOMAIN} to complete the WordPress setup "
     fi        
 }
 
@@ -317,7 +317,7 @@ main(){
     if [ ! -d /usr/local/CyberCP ]; then
         main_domain_setup
         main_cert_setup
-        echoG "\nEnjoy your accelarated OpenLiteSpeed server."
+        echoG "\nEnjoy your accelerated OpenLiteSpeed server."
     fi   
     main_upgrade
     endsetup
