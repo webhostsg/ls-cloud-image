@@ -75,10 +75,9 @@ get_ip()
 }
 
 domainhelp(){
-    echo -e "\nTo visit your apps by domain instead of IP, please enter a valid domain."
+    echo -e "Please make sure the domain's DNS record has been properly pointed to this server."
     echo -e "If you don't have one yet, you may cancel this process by pressing CTRL+C and continuing to SSH."
     echo -e "This prompt will open again the next time you log in, and will continue to do so until you finish the setup."
-    echo -e "Please make sure the domain's DNS record has been properly pointed to this server."
     echo -e "\n(If you are using top level (root) domain, please include it with \033[38;5;71mwww.\033[39m so both www and root domain will be added)"
     echo -e "(ex. www.domain.com or sub.domain.com). Do not include http/s.\n"
 }
@@ -142,9 +141,9 @@ domainverify(){
     if [ ${WWW} = 'TRUE' ]; then
         curl -Is http://${MY_DOMAIN2}/ | grep -i LiteSpeed > /dev/null 2>&1
         if [ $? = 0 ]; then 
-            echoG "\n${MY_DOMAIN2} check PASS"   
+            echoG -e "\n${MY_DOMAIN2} check PASS"   
         else
-            echo "\n${MY_DOMAIN2} inaccessible, please verify."; exit 1    
+            echo -e "\n${MY_DOMAIN2} inaccessible, please verify."; exit 1    
         fi    
     fi
 }
@@ -195,7 +194,7 @@ lecertapply(){
             certChain               1
         }" >> ${LSVHCFPATH}
 
-        echoG "\ncertificate has been successfully installed..."
+        echoG -e "\ncertificate has been successfully installed..."
     else
         echo "Oops, something went wrong..."
         exit 1
@@ -298,7 +297,7 @@ main_upgrade(){
             else
                 yumupgrade
             fi    
-            echoG "\nUpdate complete" 
+            echoG -e "\nUpdate complete" 
             #END_TIME="$(date -u +%s)"
             #ELAPSED="$((${END_TIME}-${START_TIME}))"
             #echoY "***Total of ${ELAPSED} seconds to finish process***"
@@ -307,7 +306,7 @@ main_upgrade(){
            
     else
         echoG 'Your system is up to date'
-        echoG '\nPlease visit https://${MY_DOMAIN} to complete the WordPress setup '
+        echoG -e '\nPlease visit https://${MY_DOMAIN} to complete the WordPress setup '
     fi        
 }
 
