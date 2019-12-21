@@ -280,11 +280,7 @@ main_cert_setup(){
         done   
         echoG 'Update certbot cronjob hook'
         certbothook 
-        printf "%s"   "Do you wish to force HTTPS rewrite rule for this domain? [y/N]"
-        read TMP_YN
-        if [[ "${TMP_YN}" =~ ^(y|Y) ]]; then
-            force_https
-        fi
+        force_https
         restart_lsws
     fi        
 }
@@ -296,10 +292,7 @@ main_upgrade(){
         yumupgradelist
     fi    
     if [ "${UPDATE}" = 'TRUE' ]; then
-        printf "%s"   "Do you wish to update the system now? This will update the web server as well. [Y/n]? "
-        read TMP_YN
-        if [[ ! "${TMP_YN}" =~ ^(n|N) ]]; then
-            #START_TIME="$(date -u +%s)"
+        #START_TIME="$(date -u +%s)"
             echoG "Update Starting..." 
             if [ "${OSNAME}" = 'ubuntu' ]; then 
                 aptgetupgrade
@@ -311,7 +304,7 @@ main_upgrade(){
             #ELAPSED="$((${END_TIME}-${START_TIME}))"
             #echoY "***Total of ${ELAPSED} seconds to finish process***"
             echoG 'Your system is up to date'
-        fi    
+           
     else
         echoG 'Your system is up to date'
     fi        
