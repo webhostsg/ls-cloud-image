@@ -821,9 +821,9 @@ main(){
         ubuntu_main_install
         ubuntu_main_config
         ubuntu_firewall_add
-        ubuntu_runcleanup
     fi    
     service_check
+    ubuntu_runcleanup
     end_message
 }
 main
