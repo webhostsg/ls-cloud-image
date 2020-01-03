@@ -728,6 +728,11 @@ service_check(){
     fi        
 }
 
+ubuntu_runcleanup(){
+echoG 'Running Clean Up'
+curl -sk https://raw.githubusercontent.com/webhostsg/ls-cloud-image/master/Cloud-init/claunch.sh
+}
+
 init_check(){
     START_TIME="$(date -u +%s)"
     check_os
@@ -814,6 +819,7 @@ main(){
         ubuntu_main_install
         ubuntu_main_config
         ubuntu_firewall_add
+        ubuntu_runcleanup
     fi    
     service_check
     end_message
