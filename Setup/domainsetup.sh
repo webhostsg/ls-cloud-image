@@ -7,6 +7,8 @@
 # *********************************************************************/
 MY_DOMAIN=''
 MY_DOMAIN2=''
+ADMIN_USER=$(openssl rand -hex 8)
+ADMIN_PASS=$(openssl rand -base64 10)
 DOCHM='/var/www/html'
 LSDIR='/usr/local/lsws'
 WEBCF="${LSDIR}/conf/httpd_config.conf"
@@ -284,6 +286,13 @@ main_cert_setup(){
             
 }
 
+wordpress_finalise(){
+   echoG "Finalizing WordPress Installation."
+   wp core install --url=${MY_DOMAIN} --title="My Website" --admin_user=${ADMIN_USER} --admin_password=${ADMIN_PASS} --admin_email=${EMAIL} --path=/var/www/html --allow-root > /dev/null 2>&1
+   apt-get -y remove hhvm > /dev/null 2>&1
+   echoG "WordPress final setup completed"
+}
+
 main_upgrade(){
     if [ "${OSNAME}" = 'ubuntu' ]; then 
         aptupgradelist
@@ -318,8 +327,9 @@ main(){
     if [ ! -d /usr/local/CyberCP ]; then
         main_domain_setup
         main_cert_setup
-        echoG "\nEnjoy your accelerated OpenLiteSpeed server."
-    fi   
+        echoG "\nAccelerated OpenLiteSpeed server installation complete."
+    fi
+    wordpress_finalise
     main_upgrade
     endsetup
 }
