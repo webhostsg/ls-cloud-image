@@ -715,6 +715,11 @@ bash <( curl -sk https://raw.githubusercontent.com/webhostsg/ls-cloud-image/mast
 echoG 'Completed Clean Up'
 }
 
+ubuntu_settime(){
+sudo unlink /etc/localtime
+sudo ln -s /usr/share/zoneinfo/Asia/Singapore /etc/localtime
+}
+
 service_check(){
     check_sql_ver
     for ITEM in lsws memcached redis mariadb
@@ -821,6 +826,7 @@ main(){
         ubuntu_main_install
         ubuntu_main_config
         ubuntu_firewall_add
+        ubuntu_settime
         ubuntu_cleanup
     fi    
     service_check
