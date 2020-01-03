@@ -724,7 +724,7 @@ echoG 'Local Time Changed to Asia/Singapore'
 
 ubuntu_changessh(){
 echoG 'Changing SSH Port'
-sed -i 's/#Port 22/Port 1234/g' /etc/ssh/sshd_config
+sed -i 's/#Port 22/Port 1980/g' /etc/ssh/sshd_config
 echoG 'SSH Port Changed...'
 echoG 'Restarting SSH Service.'
 service sshd restart
