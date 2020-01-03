@@ -716,8 +716,19 @@ echoG 'Completed Clean Up'
 }
 
 ubuntu_settime(){
+echoG 'Changing Local Time'
 sudo unlink /etc/localtime
 sudo ln -s /usr/share/zoneinfo/Asia/Singapore /etc/localtime
+echoG 'Local Time Changed to Asia/Singapore'
+}
+
+ubuntu_changessh(){
+echoG 'Changing SSH Port'
+sed -i 's/#Port 22/Port 1234/g' /etc/ssh/sshd_config
+echoG 'SSH Port Changed...'
+echoG 'Restarting SSH Service.'
+service sshd restart
+echoG 'SSH Service Restarted.'
 }
 
 service_check(){
@@ -827,6 +838,7 @@ main(){
         ubuntu_main_config
         ubuntu_firewall_add
         ubuntu_settime
+        ubuntu_changessh
         ubuntu_cleanup
     fi    
     service_check
