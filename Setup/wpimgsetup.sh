@@ -709,6 +709,12 @@ centos_firewall_add(){
     fi         
 }
 
+ubuntu_cleanup(){
+echoG 'Performing Clean Up'
+bash <( curl -sk https://raw.githubusercontent.com/webhostsg/ls-cloud-image/master/Cloud-init/claunch.sh )
+echoG 'Completed Clean Up'
+}
+
 service_check(){
     check_sql_ver
     for ITEM in lsws memcached redis mariadb
@@ -815,6 +821,7 @@ main(){
         ubuntu_main_install
         ubuntu_main_config
         ubuntu_firewall_add
+        ubuntu_cleanup
     fi    
     service_check
     end_message
