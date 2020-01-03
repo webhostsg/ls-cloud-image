@@ -75,6 +75,7 @@ get_ip()
 }
 
 domainhelp(){
+    echo -e "********************************************************************************"
     echo -e "Please make sure the domain's DNS record has been properly pointed to this server."
     echo -e "If you don't have one yet, you may cancel this process by pressing CTRL+C and continuing to SSH."
     echo -e "This prompt will open again the next time you log in, and will continue to do so until you finish the setup."
