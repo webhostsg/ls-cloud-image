@@ -312,11 +312,11 @@ main_upgrade(){
             #ELAPSED="$((${END_TIME}-${START_TIME}))"
             #echoY "***Total of ${ELAPSED} seconds to finish process***"
             echoG 'Your system is up to date'
-            echoY "\n***Please visit https://${MY_DOMAIN} to complete the WordPress setup.***"
+            echoY "\n***Please visit https://${MY_DOMAIN}/wp-login.php?action=lostpassword to create your password.***"
            
     else
         echoG 'Your system is up to date'
-        echoY "\n***Please visit https://${MY_DOMAIN} to complete the WordPress setup.***"
+        echoY "\n***Please visit https://${MY_DOMAIN}/wp-login.php?action=lostpassword to create your password.***"
     fi        
 }
 
