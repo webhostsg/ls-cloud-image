@@ -272,6 +272,16 @@ ubuntu_install_postfix(){
     -o Dpkg::Options::='--force-confold' install postfix > /dev/null 2>&1
 }
 
+ubuntu_install_hhvm (){
+    echo "Install HHVM for WP-CLI"
+    apt install hhvm
+    if [ -e /usr/bin/hhvm ]; then
+    echoG 'Insall HHVM finished'
+    else
+    echoR 'Please check HHVM'
+    fi
+}
+
 ubuntu_install_certbot(){       
     echoG "Install CertBot" 
     add-apt-repository universe > /dev/null 2>&1
@@ -760,6 +770,7 @@ ubuntu_main_install(){
     ubuntu_install_postfix
     install_phpmyadmin
     install_wp_cli
+    ubuntu_install_hhvm
     landing_pg
 }
 
