@@ -681,7 +681,6 @@ ubuntu_firewall_add(){
         echo "y" | ufw enable > /dev/null 2>&1 
         ufw status | grep '80.*ALLOW' > /dev/null 2>&1
         if [ ${?} = 0 ]; then
-            ufw reload
             echoG 'firewalld rules setup success'
         else 
             echoR 'Please check ufw rules'    
@@ -729,11 +728,6 @@ service_check(){
     fi        
 }
 
-ubuntu_runcleanup(){
-echoG 'Running Clean Up'
-bash <( curl -sk https://raw.githubusercontent.com/webhostsg/ls-cloud-image/master/Cloud-init/claunch.sh )
-echoG 'Clean Up Complete.'
-}
 
 init_check(){
     START_TIME="$(date -u +%s)"
@@ -823,7 +817,6 @@ main(){
         ubuntu_firewall_add
     fi    
     service_check
-    ubuntu_runcleanup
     end_message
 }
 main
