@@ -274,7 +274,7 @@ ubuntu_install_postfix(){
 
 ubuntu_install_hhvm (){
     echo "Install HHVM for WP-CLI"
-    apt install hhvm
+    apt-get -y install hhvm > /dev/null 2>&1
     if [ -e /usr/bin/hhvm ]; then
     echoG 'Insall HHVM finished'
     else
