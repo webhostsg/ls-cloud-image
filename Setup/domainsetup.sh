@@ -288,7 +288,11 @@ main_cert_setup(){
 
 wordpress_finalise(){
    echoG "Finalizing WordPress Installation."
-   /usr/local/bin/wp core install --url='${MY_DOMAIN}' --title='My Website' --admin_user='${ADMIN_USER}' --admin_password='${ADMIN_PASS}' --admin_email='${EMAIL}' --path=/var/www/html --allow-root > /dev/null 2>&1
+   echoG "URL = ${MY_DOMAIN}"
+   echoG "Admin Username = ${ADMIN_USER}"
+   echoG "Admin Password = ${ADMIN_PASS}"
+   echoG "Admin Email = ${EMAIL}"
+   /usr/local/bin/wp core install --url=${MY_DOMAIN} --title='My Website' --admin_user=${ADMIN_USER} --admin_password=${ADMIN_PASS} --admin_email=${EMAIL} --path=/var/www/html --allow-root > /dev/null 2>&1
    echoG "WordPress final setup completed"
    echoG "Removing unecessary WordPress installation files"
    apt-get -y remove hhvm > /dev/null 2>&1
