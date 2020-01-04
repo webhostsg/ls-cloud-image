@@ -324,8 +324,8 @@ main_upgrade(){
     else
         echoG 'Your system is up to date'
         echo -e "********************************************************************************"
-        echoY -e "                     Congratulations! Setup has completed.                      "
-        echoY -e "    You can close this and proceed to follow the instructions in the email.     "
+        echoY "                     Congratulations! Setup has completed.                      "
+        echoY "    You can close this and proceed to follow the instructions in the email.     "
         echo -e "********************************************************************************"
     fi        
 }
