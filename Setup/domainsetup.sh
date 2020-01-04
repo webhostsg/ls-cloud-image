@@ -83,6 +83,7 @@ domainhelp(){
     echo -e "This prompt will open again the next time you log in, and will continue to do so until you finish the setup."
     echo -e "\n(If you are using top level (root) domain, please include it with \033[38;5;71mwww.\033[39m so both www and root domain will be added)"
     echo -e "(ex. www.domain.com or sub.domain.com). Do not include http/s.\n"
+    echo -e "********************************************************************************"
 }
 
 restart_lsws(){
@@ -164,7 +165,7 @@ main_domain_setup(){
 }
 emailinput(){
     CKREG="^[a-z0-9!#\$%&'*+/=?^_\`{|}~-]+(\.[a-z0-9!#$%&'*+/=?^_\`{|}~-]+)*@([a-z0-9]([a-z0-9-]*[a-z0-9])?\.)+[a-z0-9]([a-z0-9-]*[a-z0-9])?\$"
-    printf "%s" "Please enter your E-mail: "
+    printf "%s" "Please enter your E-mail (The email will be used for WordPress login): "
     read EMAIL
     if [[ ${EMAIL} =~ ${CKREG} ]] ; then
       echo -e "The E-mail you entered is: \e[31m${EMAIL}\e[39m"
@@ -287,7 +288,7 @@ main_cert_setup(){
 }
 
 wordpress_finalise(){
-   echoG "Finalizing WordPress Installation."
+   echoG "Finalizing WordPress Installation. Please wait."
    sed -i "/DB_HOST/s/'[^']*'/'127.0.0.1'/2" /var/www/html/wp-config.php
    /usr/local/bin/wp core install --url=${MY_DOMAIN} --title='My Website' --admin_user=${ADMIN_USER} --admin_password=${ADMIN_PASS} --admin_email=${EMAIL} --path=/var/www/html --allow-root > /dev/null 2>&1
    echoG "WordPress final setup completed"
@@ -304,7 +305,7 @@ main_upgrade(){
     fi    
     if [ "${UPDATE}" = 'TRUE' ]; then
         #START_TIME="$(date -u +%s)"
-            echoG "Update Starting... Please wait." 
+            echoG "Update Starting. Please wait." 
             if [ "${OSNAME}" = 'ubuntu' ]; then 
                 aptgetupgrade
             else
@@ -315,11 +316,11 @@ main_upgrade(){
             #ELAPSED="$((${END_TIME}-${START_TIME}))"
             #echoY "***Total of ${ELAPSED} seconds to finish process***"
             echoG 'Your system is up to date'
-            echoY "\n***Please visit https://${MY_DOMAIN}/wp-login.php?action=lostpassword to create your password.***"
+            echoY "\n***Setup completed. You can close this and proceed to follow the instructions in the email.***"
            
     else
         echoG 'Your system is up to date'
-        echoY "\n***Please visit https://${MY_DOMAIN}/wp-login.php?action=lostpassword to create your password.***"
+        echoY "\n***Setup completed. You can close this and proceed to follow the instructions in the email.***"
     fi        
 }
 
