@@ -316,7 +316,10 @@ main_upgrade(){
             #ELAPSED="$((${END_TIME}-${START_TIME}))"
             #echoY "***Total of ${ELAPSED} seconds to finish process***"
             echoG 'Your system is up to date'
-            echoY "\n***Setup completed. You can close this and proceed to follow the instructions in the email.***"
+            echo -e "********************************************************************************"
+            echoY -e "                     Congratulations! Setup has completed.                      "
+            echoY -e "    You can close this and proceed to follow the instructions in the email.     "
+            echo -e "********************************************************************************"
            
     else
         echoG 'Your system is up to date'
