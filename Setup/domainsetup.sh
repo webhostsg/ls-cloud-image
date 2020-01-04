@@ -145,7 +145,7 @@ domainverify(){
     if [ ${WWW} = 'TRUE' ]; then
         curl -Is http://${MY_DOMAIN2}/ | grep -i LiteSpeed > /dev/null 2>&1
         if [ $? = 0 ]; then 
-            echoG -e "\n${MY_DOMAIN2} check PASS"   
+            echoG "\n${MY_DOMAIN2} check PASS"   
         else
             echo -e "\n${MY_DOMAIN2} inaccessible, please verify."; exit 1    
         fi    
@@ -198,7 +198,7 @@ lecertapply(){
             certChain               1
         }" >> ${LSVHCFPATH}
 
-        echoG -e "\ncertificate has been successfully installed..."
+        echoG "\ncertificate has been successfully installed..."
     else
         echo "Oops, something went wrong..."
         exit 1
@@ -317,15 +317,15 @@ main_upgrade(){
             #echoY "***Total of ${ELAPSED} seconds to finish process***"
             echoG 'Your system is up to date'
             echo -e "********************************************************************************"
-            echoY -e "                     Congratulations! Setup has completed.                      "
-            echoY -e "    You can close this and proceed to follow the instructions in the email.     "
+            echoY "\n                     Congratulations! Setup has completed.                      "
+            echoY "\n    You can close this and proceed to follow the instructions in the email.     "
             echo -e "********************************************************************************"
            
     else
         echoG 'Your system is up to date'
         echo -e "********************************************************************************"
-        echoY "                     Congratulations! Setup has completed.                      "
-        echoY "    You can close this and proceed to follow the instructions in the email.     "
+        echoY "\n                     Congratulations! Setup has completed.                      "
+        echoY "\n    You can close this and proceed to follow the instructions in the email.     "
         echo -e "********************************************************************************"
     fi        
 }
