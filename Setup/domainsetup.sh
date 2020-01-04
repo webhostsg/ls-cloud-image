@@ -198,7 +198,7 @@ lecertapply(){
             certChain               1
         }" >> ${LSVHCFPATH}
 
-        echoG "\ncertificate has been successfully installed..."
+        echoG "\nSSL certificate has been successfully installed..."
     else
         echo "Oops, something went wrong..."
         exit 1
