@@ -78,10 +78,10 @@ get_ip()
 
 domainhelp(){
     echo -e "********************************************************************************"
-    echo -e "Please make sure the domain's DNS record has been properly pointed to this server."
-    echo -e "If you don't have one yet, you may cancel this process by pressing CTRL+C and continuing to SSH."
-    echo -e "This prompt will open again the next time you log in, and will continue to do so until you finish the setup."
-    echo -e "\n(If you are using top level (root) domain, please include it with \033[38;5;71mwww.\033[39m so both www and root domain will be added)"
+    echo -e "Please make sure the domain's DNS record has been properly pointed to this\nserver."
+    echo -e "If you don't have one yet, you may cancel this process by pressing CTRL+C and\ncontinuing to SSH."
+    echo -e "This prompt will open again the next time you log in, and will continue to do so\nuntil you finish the setup."
+    echo -e "\n(If you are using top level (root) domain, please include it with\n\033[38;5;71mwww.\033[39m so both www and root domain will be added)"
     echo -e "(ex. www.domain.com or sub.domain.com). Do not include http/s.\n"
     echo -e "********************************************************************************"
 }
